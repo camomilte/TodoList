@@ -30,11 +30,11 @@
         {
             lblTaskTitle = new Label();
             lblLocation = new Label();
-            lblDate = new Label();
+            lblDueDate = new Label();
             lblTag = new Label();
             txtTaskTitle = new TextBox();
             txtLocation = new TextBox();
-            dtpTaskDate = new DateTimePicker();
+            dtpTaskDueDate = new DateTimePicker();
             chkImportant = new CheckBox();
             btnAddTask = new Button();
             lblTaskList = new Label();
@@ -67,14 +67,14 @@
             lblLocation.TabIndex = 1;
             lblLocation.Text = "Location";
             // 
-            // lblDate
+            // lblDueDate
             // 
-            lblDate.AutoSize = true;
-            lblDate.Location = new Point(13, 129);
-            lblDate.Name = "lblDate";
-            lblDate.Size = new Size(31, 15);
-            lblDate.TabIndex = 2;
-            lblDate.Text = "Date";
+            lblDueDate.AutoSize = true;
+            lblDueDate.Location = new Point(13, 129);
+            lblDueDate.Name = "lblDueDate";
+            lblDueDate.Size = new Size(54, 15);
+            lblDueDate.TabIndex = 2;
+            lblDueDate.Text = "Due date";
             // 
             // lblTag
             // 
@@ -101,13 +101,13 @@
             txtLocation.Size = new Size(261, 23);
             txtLocation.TabIndex = 5;
             // 
-            // dtpTaskDate
+            // dtpTaskDueDate
             // 
-            dtpTaskDate.Location = new Point(13, 147);
-            dtpTaskDate.Margin = new Padding(3, 3, 3, 10);
-            dtpTaskDate.Name = "dtpTaskDate";
-            dtpTaskDate.Size = new Size(261, 23);
-            dtpTaskDate.TabIndex = 6;
+            dtpTaskDueDate.Location = new Point(13, 147);
+            dtpTaskDueDate.Margin = new Padding(3, 3, 3, 10);
+            dtpTaskDueDate.Name = "dtpTaskDueDate";
+            dtpTaskDueDate.Size = new Size(261, 23);
+            dtpTaskDueDate.TabIndex = 6;
             // 
             // chkImportant
             // 
@@ -172,7 +172,7 @@
             // btnFinishTask
             // 
             btnFinishTask.Location = new Point(684, 406);
-            btnFinishTask.Margin = new Padding(0, 0, 0, 0);
+            btnFinishTask.Margin = new Padding(0);
             btnFinishTask.Name = "btnFinishTask";
             btnFinishTask.Size = new Size(95, 23);
             btnFinishTask.TabIndex = 16;
@@ -187,9 +187,9 @@
             grpNewTask.Controls.Add(lblTag);
             grpNewTask.Controls.Add(lblLocation);
             grpNewTask.Controls.Add(txtLocation);
-            grpNewTask.Controls.Add(lblDate);
+            grpNewTask.Controls.Add(lblDueDate);
             grpNewTask.Controls.Add(btnAddTask);
-            grpNewTask.Controls.Add(dtpTaskDate);
+            grpNewTask.Controls.Add(dtpTaskDueDate);
             grpNewTask.Location = new Point(18, 18);
             grpNewTask.Margin = new Padding(0);
             grpNewTask.Name = "grpNewTask";
@@ -226,12 +226,12 @@
         private Label lblNewTask;
         private Label lblTaskTitle;
         private Label lblLocation;
-        private Label lblDate;
+        private Label lblDueDate;
         private Label lblTag;
         private TextBox txtTaskTitle;
         private TextBox txtNewTask;
         private TextBox txtLocation;
-        private DateTimePicker dtpTaskDate;
+        private DateTimePicker dtpTaskDueDate;
         private CheckBox chkImportant;
         private Button btnAddTask;
         private Label lblTaskList;
