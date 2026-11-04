@@ -1,6 +1,6 @@
 ﻿namespace TodoList
 {
-    partial class Form1
+    partial class formTaskManager
     {
         /// <summary>
         ///  Required designer variable.
@@ -39,7 +39,7 @@
             btnAddTask = new Button();
             lblTaskList = new Label();
             lblTaskDetails = new Label();
-            listBox1 = new ListBox();
+            lstTasks = new ListBox();
             splTasks = new SplitContainer();
             btnFinishTask = new Button();
             grpNewTask = new GroupBox();
@@ -128,6 +128,7 @@
             btnAddTask.TabIndex = 8;
             btnAddTask.Text = "Add Task";
             btnAddTask.UseVisualStyleBackColor = true;
+            btnAddTask.Click += btnAddTask_Click;
             // 
             // lblTaskList
             // 
@@ -147,14 +148,14 @@
             lblTaskDetails.TabIndex = 12;
             lblTaskDetails.Text = "Task details";
             // 
-            // listBox1
+            // lstTasks
             // 
-            listBox1.Dock = DockStyle.Fill;
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(0, 0);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(145, 360);
-            listBox1.TabIndex = 13;
+            lstTasks.Dock = DockStyle.Fill;
+            lstTasks.FormattingEnabled = true;
+            lstTasks.Location = new Point(0, 0);
+            lstTasks.Name = "lstTasks";
+            lstTasks.Size = new Size(145, 360);
+            lstTasks.TabIndex = 13;
             // 
             // splTasks
             // 
@@ -164,7 +165,7 @@
             // 
             // splTasks.Panel1
             // 
-            splTasks.Panel1.Controls.Add(listBox1);
+            splTasks.Panel1.Controls.Add(lstTasks);
             splTasks.Size = new Size(435, 360);
             splTasks.SplitterDistance = 145;
             splTasks.TabIndex = 15;
@@ -199,7 +200,7 @@
             grpNewTask.TabStop = false;
             grpNewTask.Text = "Add task";
             // 
-            // Form1
+            // formTaskManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -209,9 +210,9 @@
             Controls.Add(lblTaskDetails);
             Controls.Add(lblTaskList);
             Controls.Add(splTasks);
-            Name = "Form1";
+            Name = "formTaskManager";
             Padding = new Padding(18);
-            Text = "Form1";
+            Text = "Task Manager";
             splTasks.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splTasks).EndInit();
             splTasks.ResumeLayout(false);
@@ -236,7 +237,7 @@
         private Button btnAddTask;
         private Label lblTaskList;
         private Label lblTaskDetails;
-        private ListBox listBox1;
+        private ListBox lstTasks;
         private SplitContainer splTasks;
         private Button btnFinishTask;
         private GroupBox grpNewTask;

@@ -12,13 +12,12 @@ internal class Task
     public bool Important { get; set; }
     public bool Done { get; set; }
 
-    public Task(string title, string location, DateTime duedate, bool important, bool done)
+    public Task(string title, string location, DateTime duedate, bool important)
     {
         Title = title;
         Location = location;
         DueDate = duedate;
         Important = important;
-        Done = done;
     }
 
     public string GetTaskDetails()
