@@ -32,23 +32,34 @@
             lblLocation = new Label();
             lblDueDate = new Label();
             lblTag = new Label();
-            lblTaskList = new Label();
-            lblTaskDetails = new Label();
             txtTaskTitle = new TextBox();
             txtLocation = new TextBox();
             dtpTaskDueDate = new DateTimePicker();
             chkImportant = new CheckBox();
             btnAddTask = new Button();
             btnFinishTask = new Button();
-            lstTasks = new ListBox();
+            lstTasksActive = new ListBox();
             splTasks = new SplitContainer();
+            rtxTaskDetailsActive = new RichTextBox();
             grpNewTask = new GroupBox();
-            rtxTaskDetails = new RichTextBox();
+            tabTaskList = new TabControl();
+            tabPageActive = new TabPage();
+            tabPageFinished = new TabPage();
+            splitContainer1 = new SplitContainer();
+            lstTasksFinished = new ListBox();
+            rtxTaskDetailsFinished = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splTasks).BeginInit();
             splTasks.Panel1.SuspendLayout();
             splTasks.Panel2.SuspendLayout();
             splTasks.SuspendLayout();
             grpNewTask.SuspendLayout();
+            tabTaskList.SuspendLayout();
+            tabPageActive.SuspendLayout();
+            tabPageFinished.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // lblTaskTitle
@@ -86,24 +97,6 @@
             lblTag.Size = new Size(26, 15);
             lblTag.TabIndex = 3;
             lblTag.Text = "Tag";
-            // 
-            // lblTaskList
-            // 
-            lblTaskList.AutoSize = true;
-            lblTaskList.Location = new Point(344, 18);
-            lblTaskList.Name = "lblTaskList";
-            lblTaskList.Size = new Size(35, 15);
-            lblTaskList.TabIndex = 11;
-            lblTaskList.Text = "Tasks";
-            // 
-            // lblTaskDetails
-            // 
-            lblTaskDetails.AutoSize = true;
-            lblTaskDetails.Location = new Point(484, 18);
-            lblTaskDetails.Name = "lblTaskDetails";
-            lblTaskDetails.Size = new Size(67, 15);
-            lblTaskDetails.TabIndex = 12;
-            lblTaskDetails.Text = "Task details";
             // 
             // txtTaskTitle
             // 
@@ -152,40 +145,52 @@
             // 
             // btnFinishTask
             // 
-            btnFinishTask.Location = new Point(684, 406);
+            btnFinishTask.Location = new Point(344, 357);
             btnFinishTask.Margin = new Padding(0);
             btnFinishTask.Name = "btnFinishTask";
             btnFinishTask.Size = new Size(95, 23);
             btnFinishTask.TabIndex = 16;
             btnFinishTask.Text = "Mark as done";
             btnFinishTask.UseVisualStyleBackColor = true;
+            btnFinishTask.Click += btnFinishTask_Click;
             // 
-            // lstTasks
+            // lstTasksActive
             // 
-            lstTasks.Dock = DockStyle.Fill;
-            lstTasks.FormattingEnabled = true;
-            lstTasks.Location = new Point(0, 0);
-            lstTasks.Name = "lstTasks";
-            lstTasks.Size = new Size(145, 360);
-            lstTasks.TabIndex = 13;
-            lstTasks.SelectedIndexChanged += lstTasks_SelectedIndexChanged;
+            lstTasksActive.Dock = DockStyle.Fill;
+            lstTasksActive.FormattingEnabled = true;
+            lstTasksActive.Location = new Point(0, 0);
+            lstTasksActive.Name = "lstTasksActive";
+            lstTasksActive.Size = new Size(162, 344);
+            lstTasksActive.TabIndex = 13;
+            lstTasksActive.SelectedIndexChanged += lstTasksActive_SelectedIndexChanged;
             // 
             // splTasks
             // 
-            splTasks.Location = new Point(344, 36);
+            splTasks.Dock = DockStyle.Top;
+            splTasks.Location = new Point(3, 3);
             splTasks.Margin = new Padding(3, 3, 3, 10);
             splTasks.Name = "splTasks";
             // 
             // splTasks.Panel1
             // 
-            splTasks.Panel1.Controls.Add(lstTasks);
+            splTasks.Panel1.Controls.Add(lstTasksActive);
             // 
             // splTasks.Panel2
             // 
-            splTasks.Panel2.Controls.Add(rtxTaskDetails);
-            splTasks.Size = new Size(435, 360);
-            splTasks.SplitterDistance = 145;
+            splTasks.Panel2.Controls.Add(rtxTaskDetailsActive);
+            splTasks.Size = new Size(436, 344);
+            splTasks.SplitterDistance = 162;
             splTasks.TabIndex = 15;
+            // 
+            // rtxTaskDetailsActive
+            // 
+            rtxTaskDetailsActive.Dock = DockStyle.Fill;
+            rtxTaskDetailsActive.Location = new Point(0, 0);
+            rtxTaskDetailsActive.Name = "rtxTaskDetailsActive";
+            rtxTaskDetailsActive.ReadOnly = true;
+            rtxTaskDetailsActive.Size = new Size(270, 344);
+            rtxTaskDetailsActive.TabIndex = 18;
+            rtxTaskDetailsActive.Text = "";
             // 
             // grpNewTask
             // 
@@ -207,26 +212,82 @@
             grpNewTask.TabStop = false;
             grpNewTask.Text = "Add task";
             // 
-            // rtxTaskDetails
+            // tabTaskList
             // 
-            rtxTaskDetails.Dock = DockStyle.Fill;
-            rtxTaskDetails.Location = new Point(0, 0);
-            rtxTaskDetails.Name = "rtxTaskDetails";
-            rtxTaskDetails.ReadOnly = true;
-            rtxTaskDetails.Size = new Size(286, 360);
-            rtxTaskDetails.TabIndex = 18;
-            rtxTaskDetails.Text = "";
+            tabTaskList.Controls.Add(tabPageActive);
+            tabTaskList.Controls.Add(tabPageFinished);
+            tabTaskList.Location = new Point(329, 18);
+            tabTaskList.Name = "tabTaskList";
+            tabTaskList.SelectedIndex = 0;
+            tabTaskList.Size = new Size(450, 411);
+            tabTaskList.TabIndex = 14;
+            // 
+            // tabPageActive
+            // 
+            tabPageActive.Controls.Add(splTasks);
+            tabPageActive.Controls.Add(btnFinishTask);
+            tabPageActive.Location = new Point(4, 24);
+            tabPageActive.Name = "tabPageActive";
+            tabPageActive.Padding = new Padding(3);
+            tabPageActive.Size = new Size(442, 383);
+            tabPageActive.TabIndex = 0;
+            tabPageActive.Text = "Active";
+            tabPageActive.UseVisualStyleBackColor = true;
+            // 
+            // tabPageFinished
+            // 
+            tabPageFinished.Controls.Add(splitContainer1);
+            tabPageFinished.Location = new Point(4, 24);
+            tabPageFinished.Name = "tabPageFinished";
+            tabPageFinished.Padding = new Padding(3);
+            tabPageFinished.Size = new Size(442, 383);
+            tabPageFinished.TabIndex = 1;
+            tabPageFinished.Text = "Finished";
+            tabPageFinished.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(3, 3);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(lstTasksFinished);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(rtxTaskDetailsFinished);
+            splitContainer1.Size = new Size(436, 377);
+            splitContainer1.SplitterDistance = 164;
+            splitContainer1.TabIndex = 0;
+            // 
+            // lstTasksFinished
+            // 
+            lstTasksFinished.Dock = DockStyle.Fill;
+            lstTasksFinished.FormattingEnabled = true;
+            lstTasksFinished.Location = new Point(0, 0);
+            lstTasksFinished.Name = "lstTasksFinished";
+            lstTasksFinished.Size = new Size(164, 377);
+            lstTasksFinished.TabIndex = 0;
+            // 
+            // rtxTaskDetailsFinished
+            // 
+            rtxTaskDetailsFinished.Dock = DockStyle.Fill;
+            rtxTaskDetailsFinished.Location = new Point(0, 0);
+            rtxTaskDetailsFinished.Name = "rtxTaskDetailsFinished";
+            rtxTaskDetailsFinished.ReadOnly = true;
+            rtxTaskDetailsFinished.Size = new Size(268, 377);
+            rtxTaskDetailsFinished.TabIndex = 0;
+            rtxTaskDetailsFinished.Text = "";
             // 
             // formTaskManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(tabTaskList);
             Controls.Add(grpNewTask);
-            Controls.Add(btnFinishTask);
-            Controls.Add(lblTaskDetails);
-            Controls.Add(lblTaskList);
-            Controls.Add(splTasks);
             Name = "formTaskManager";
             Padding = new Padding(18);
             Text = "Task Manager";
@@ -236,8 +297,14 @@
             splTasks.ResumeLayout(false);
             grpNewTask.ResumeLayout(false);
             grpNewTask.PerformLayout();
+            tabTaskList.ResumeLayout(false);
+            tabPageActive.ResumeLayout(false);
+            tabPageFinished.ResumeLayout(false);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -252,12 +319,16 @@
         private DateTimePicker dtpTaskDueDate;
         private CheckBox chkImportant;
         private Button btnAddTask;
-        private Label lblTaskList;
-        private Label lblTaskDetails;
-        private ListBox lstTasks;
+        private ListBox lstTasksActive;
         private SplitContainer splTasks;
         private Button btnFinishTask;
         private GroupBox grpNewTask;
-        private RichTextBox rtxTaskDetails;
+        private RichTextBox rtxTaskDetailsActive;
+        private TabControl tabTaskList;
+        private TabPage tabPageActive;
+        private TabPage tabPageFinished;
+        private SplitContainer splitContainer1;
+        private ListBox lstTasksFinished;
+        private RichTextBox rtxTaskDetailsFinished;
     }
 }

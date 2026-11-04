@@ -9,11 +9,11 @@ namespace TodoList
         public formTaskManager()
         {
             InitializeComponent();
-            lstTasks.DataSource = tasks;
-            lstTasks.DisplayMember = "Title";
+            lstTasksActive.DataSource = tasks;
+            lstTasksActive.DisplayMember = "Title";
         }
 
-        // Add Task button click events
+        // ADD BUTTON EVENTS //
         private void btnAddTask_Click(object sender, EventArgs e)
         {
             // Create task
@@ -36,17 +36,28 @@ namespace TodoList
             txtTaskTitle.Focus();
         }
 
-        private void lstTasks_SelectedIndexChanged(object sender, EventArgs e)
+        // TASK LIST AND DETAILS EVENTS //
+        private void lstTasksActive_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstTasks.SelectedItem is Task task)
+            if (lstTasksActive.SelectedItem is Task task)
             {
                 // Get task details
-                rtxTaskDetails.Text = task.GetTaskDetails();
+                rtxTaskDetailsActive.Text = task.GetTaskDetails();
             }
             else
             {
                 // Clear textbox if no tasks
-                rtxTaskDetails.Clear();
+                rtxTaskDetailsActive.Clear();
+            }
+        }
+
+        // FINISH TASK BUTTON EVENTS //
+        private void btnFinishTask_Click(object sender, EventArgs e)
+        {
+            if (lstTasksActive.SelectedItem is Task task)
+            {
+                // Change Done to true
+                task.Done = true;
             }
         }
     }
