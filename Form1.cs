@@ -35,5 +35,19 @@ namespace TodoList
             // Focus back on first input field
             txtTaskTitle.Focus();
         }
+
+        private void lstTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstTasks.SelectedItem is Task task)
+            {
+                // Get task details
+                rtxTaskDetails.Text = task.GetTaskDetails();
+            }
+            else
+            {
+                // Clear textbox if no tasks
+                rtxTaskDetails.Clear();
+            }
+        }
     }
 }

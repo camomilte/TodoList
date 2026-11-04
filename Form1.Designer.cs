@@ -32,19 +32,21 @@
             lblLocation = new Label();
             lblDueDate = new Label();
             lblTag = new Label();
+            lblTaskList = new Label();
+            lblTaskDetails = new Label();
             txtTaskTitle = new TextBox();
             txtLocation = new TextBox();
             dtpTaskDueDate = new DateTimePicker();
             chkImportant = new CheckBox();
             btnAddTask = new Button();
-            lblTaskList = new Label();
-            lblTaskDetails = new Label();
+            btnFinishTask = new Button();
             lstTasks = new ListBox();
             splTasks = new SplitContainer();
-            btnFinishTask = new Button();
             grpNewTask = new GroupBox();
+            rtxTaskDetails = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)splTasks).BeginInit();
             splTasks.Panel1.SuspendLayout();
+            splTasks.Panel2.SuspendLayout();
             splTasks.SuspendLayout();
             grpNewTask.SuspendLayout();
             SuspendLayout();
@@ -84,6 +86,24 @@
             lblTag.Size = new Size(26, 15);
             lblTag.TabIndex = 3;
             lblTag.Text = "Tag";
+            // 
+            // lblTaskList
+            // 
+            lblTaskList.AutoSize = true;
+            lblTaskList.Location = new Point(344, 18);
+            lblTaskList.Name = "lblTaskList";
+            lblTaskList.Size = new Size(35, 15);
+            lblTaskList.TabIndex = 11;
+            lblTaskList.Text = "Tasks";
+            // 
+            // lblTaskDetails
+            // 
+            lblTaskDetails.AutoSize = true;
+            lblTaskDetails.Location = new Point(484, 18);
+            lblTaskDetails.Name = "lblTaskDetails";
+            lblTaskDetails.Size = new Size(67, 15);
+            lblTaskDetails.TabIndex = 12;
+            lblTaskDetails.Text = "Task details";
             // 
             // txtTaskTitle
             // 
@@ -130,23 +150,15 @@
             btnAddTask.UseVisualStyleBackColor = true;
             btnAddTask.Click += btnAddTask_Click;
             // 
-            // lblTaskList
+            // btnFinishTask
             // 
-            lblTaskList.AutoSize = true;
-            lblTaskList.Location = new Point(344, 18);
-            lblTaskList.Name = "lblTaskList";
-            lblTaskList.Size = new Size(35, 15);
-            lblTaskList.TabIndex = 11;
-            lblTaskList.Text = "Tasks";
-            // 
-            // lblTaskDetails
-            // 
-            lblTaskDetails.AutoSize = true;
-            lblTaskDetails.Location = new Point(484, 18);
-            lblTaskDetails.Name = "lblTaskDetails";
-            lblTaskDetails.Size = new Size(67, 15);
-            lblTaskDetails.TabIndex = 12;
-            lblTaskDetails.Text = "Task details";
+            btnFinishTask.Location = new Point(684, 406);
+            btnFinishTask.Margin = new Padding(0);
+            btnFinishTask.Name = "btnFinishTask";
+            btnFinishTask.Size = new Size(95, 23);
+            btnFinishTask.TabIndex = 16;
+            btnFinishTask.Text = "Mark as done";
+            btnFinishTask.UseVisualStyleBackColor = true;
             // 
             // lstTasks
             // 
@@ -156,6 +168,7 @@
             lstTasks.Name = "lstTasks";
             lstTasks.Size = new Size(145, 360);
             lstTasks.TabIndex = 13;
+            lstTasks.SelectedIndexChanged += lstTasks_SelectedIndexChanged;
             // 
             // splTasks
             // 
@@ -166,19 +179,13 @@
             // splTasks.Panel1
             // 
             splTasks.Panel1.Controls.Add(lstTasks);
+            // 
+            // splTasks.Panel2
+            // 
+            splTasks.Panel2.Controls.Add(rtxTaskDetails);
             splTasks.Size = new Size(435, 360);
             splTasks.SplitterDistance = 145;
             splTasks.TabIndex = 15;
-            // 
-            // btnFinishTask
-            // 
-            btnFinishTask.Location = new Point(684, 406);
-            btnFinishTask.Margin = new Padding(0);
-            btnFinishTask.Name = "btnFinishTask";
-            btnFinishTask.Size = new Size(95, 23);
-            btnFinishTask.TabIndex = 16;
-            btnFinishTask.Text = "Mark as done";
-            btnFinishTask.UseVisualStyleBackColor = true;
             // 
             // grpNewTask
             // 
@@ -200,6 +207,16 @@
             grpNewTask.TabStop = false;
             grpNewTask.Text = "Add task";
             // 
+            // rtxTaskDetails
+            // 
+            rtxTaskDetails.Dock = DockStyle.Fill;
+            rtxTaskDetails.Location = new Point(0, 0);
+            rtxTaskDetails.Name = "rtxTaskDetails";
+            rtxTaskDetails.ReadOnly = true;
+            rtxTaskDetails.Size = new Size(286, 360);
+            rtxTaskDetails.TabIndex = 18;
+            rtxTaskDetails.Text = "";
+            // 
             // formTaskManager
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -214,6 +231,7 @@
             Padding = new Padding(18);
             Text = "Task Manager";
             splTasks.Panel1.ResumeLayout(false);
+            splTasks.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splTasks).EndInit();
             splTasks.ResumeLayout(false);
             grpNewTask.ResumeLayout(false);
@@ -230,7 +248,6 @@
         private Label lblDueDate;
         private Label lblTag;
         private TextBox txtTaskTitle;
-        private TextBox txtNewTask;
         private TextBox txtLocation;
         private DateTimePicker dtpTaskDueDate;
         private CheckBox chkImportant;
@@ -241,5 +258,6 @@
         private SplitContainer splTasks;
         private Button btnFinishTask;
         private GroupBox grpNewTask;
+        private RichTextBox rtxTaskDetails;
     }
 }

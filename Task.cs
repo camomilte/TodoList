@@ -20,11 +20,12 @@ internal class Task
         Important = important;
     }
 
+    // Get task details formatted
     public string GetTaskDetails()
     {
         return $"Title: {Title}{Environment.NewLine}" +
                $"Location: {Location}{Environment.NewLine}" +
                $"Due: {DueDate:d}{Environment.NewLine}" +
-               $"Done: {(Done ? "Yes" : "No")}";
+               $"Important: {(Important ? "Yes" : "No")}";
     }
 }
