@@ -91,7 +91,13 @@ namespace TodoList
         // REACTIVATE TASK BUTTON //
         private void btnReactivateTask_Click(object sender, EventArgs e)
         {
-
+            if (lstTasksFinished.SelectedItem is Task task)
+            {
+                // Change Done to false
+                task.Done = false;
+                RefreshLists();
+                rtxTaskDetailsFinished.Clear();
+            }
         }
     }
 }
