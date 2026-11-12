@@ -39,27 +39,28 @@
             btnAddTask = new Button();
             btnFinishTask = new Button();
             lstTasksActive = new ListBox();
-            splTasks = new SplitContainer();
+            splTasksActive = new SplitContainer();
             rtxTaskDetailsActive = new RichTextBox();
             grpNewTask = new GroupBox();
             tabTaskList = new TabControl();
             tabPageActive = new TabPage();
             tabPageFinished = new TabPage();
-            splitContainer1 = new SplitContainer();
+            btnReactivateTask = new Button();
+            splTasksFinished = new SplitContainer();
             lstTasksFinished = new ListBox();
             rtxTaskDetailsFinished = new RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)splTasks).BeginInit();
-            splTasks.Panel1.SuspendLayout();
-            splTasks.Panel2.SuspendLayout();
-            splTasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splTasksActive).BeginInit();
+            splTasksActive.Panel1.SuspendLayout();
+            splTasksActive.Panel2.SuspendLayout();
+            splTasksActive.SuspendLayout();
             grpNewTask.SuspendLayout();
             tabTaskList.SuspendLayout();
             tabPageActive.SuspendLayout();
             tabPageFinished.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
-            splitContainer1.Panel1.SuspendLayout();
-            splitContainer1.Panel2.SuspendLayout();
-            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splTasksFinished).BeginInit();
+            splTasksFinished.Panel1.SuspendLayout();
+            splTasksFinished.Panel2.SuspendLayout();
+            splTasksFinished.SuspendLayout();
             SuspendLayout();
             // 
             // lblTaskTitle
@@ -164,23 +165,23 @@
             lstTasksActive.TabIndex = 13;
             lstTasksActive.SelectedIndexChanged += lstTasksActive_SelectedIndexChanged;
             // 
-            // splTasks
+            // splTasksActive
             // 
-            splTasks.Dock = DockStyle.Top;
-            splTasks.Location = new Point(3, 3);
-            splTasks.Margin = new Padding(3, 3, 3, 10);
-            splTasks.Name = "splTasks";
+            splTasksActive.Dock = DockStyle.Top;
+            splTasksActive.Location = new Point(3, 3);
+            splTasksActive.Margin = new Padding(3, 3, 3, 10);
+            splTasksActive.Name = "splTasksActive";
             // 
-            // splTasks.Panel1
+            // splTasksActive.Panel1
             // 
-            splTasks.Panel1.Controls.Add(lstTasksActive);
+            splTasksActive.Panel1.Controls.Add(lstTasksActive);
             // 
-            // splTasks.Panel2
+            // splTasksActive.Panel2
             // 
-            splTasks.Panel2.Controls.Add(rtxTaskDetailsActive);
-            splTasks.Size = new Size(436, 344);
-            splTasks.SplitterDistance = 162;
-            splTasks.TabIndex = 15;
+            splTasksActive.Panel2.Controls.Add(rtxTaskDetailsActive);
+            splTasksActive.Size = new Size(436, 344);
+            splTasksActive.SplitterDistance = 162;
+            splTasksActive.TabIndex = 15;
             // 
             // rtxTaskDetailsActive
             // 
@@ -224,7 +225,7 @@
             // 
             // tabPageActive
             // 
-            tabPageActive.Controls.Add(splTasks);
+            tabPageActive.Controls.Add(splTasksActive);
             tabPageActive.Controls.Add(btnFinishTask);
             tabPageActive.Location = new Point(4, 24);
             tabPageActive.Name = "tabPageActive";
@@ -236,7 +237,8 @@
             // 
             // tabPageFinished
             // 
-            tabPageFinished.Controls.Add(splitContainer1);
+            tabPageFinished.Controls.Add(btnReactivateTask);
+            tabPageFinished.Controls.Add(splTasksFinished);
             tabPageFinished.Location = new Point(4, 24);
             tabPageFinished.Name = "tabPageFinished";
             tabPageFinished.Padding = new Padding(3);
@@ -245,22 +247,33 @@
             tabPageFinished.Text = "Finished";
             tabPageFinished.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
+            // btnReactivateTask
             // 
-            splitContainer1.Dock = DockStyle.Fill;
-            splitContainer1.Location = new Point(3, 3);
-            splitContainer1.Name = "splitContainer1";
+            btnReactivateTask.Location = new Point(344, 357);
+            btnReactivateTask.Margin = new Padding(0);
+            btnReactivateTask.Name = "btnReactivateTask";
+            btnReactivateTask.Size = new Size(95, 23);
+            btnReactivateTask.TabIndex = 17;
+            btnReactivateTask.Text = "Reactivate";
+            btnReactivateTask.UseVisualStyleBackColor = true;
+            btnReactivateTask.Click += btnReactivateTask_Click;
             // 
-            // splitContainer1.Panel1
+            // splTasksFinished
             // 
-            splitContainer1.Panel1.Controls.Add(lstTasksFinished);
+            splTasksFinished.Dock = DockStyle.Top;
+            splTasksFinished.Location = new Point(3, 3);
+            splTasksFinished.Name = "splTasksFinished";
             // 
-            // splitContainer1.Panel2
+            // splTasksFinished.Panel1
             // 
-            splitContainer1.Panel2.Controls.Add(rtxTaskDetailsFinished);
-            splitContainer1.Size = new Size(436, 377);
-            splitContainer1.SplitterDistance = 164;
-            splitContainer1.TabIndex = 0;
+            splTasksFinished.Panel1.Controls.Add(lstTasksFinished);
+            // 
+            // splTasksFinished.Panel2
+            // 
+            splTasksFinished.Panel2.Controls.Add(rtxTaskDetailsFinished);
+            splTasksFinished.Size = new Size(436, 344);
+            splTasksFinished.SplitterDistance = 164;
+            splTasksFinished.TabIndex = 0;
             // 
             // lstTasksFinished
             // 
@@ -268,8 +281,9 @@
             lstTasksFinished.FormattingEnabled = true;
             lstTasksFinished.Location = new Point(0, 0);
             lstTasksFinished.Name = "lstTasksFinished";
-            lstTasksFinished.Size = new Size(164, 377);
+            lstTasksFinished.Size = new Size(164, 344);
             lstTasksFinished.TabIndex = 0;
+            lstTasksFinished.SelectedIndexChanged += lstTasksFinished_SelectedIndexChanged;
             // 
             // rtxTaskDetailsFinished
             // 
@@ -277,7 +291,7 @@
             rtxTaskDetailsFinished.Location = new Point(0, 0);
             rtxTaskDetailsFinished.Name = "rtxTaskDetailsFinished";
             rtxTaskDetailsFinished.ReadOnly = true;
-            rtxTaskDetailsFinished.Size = new Size(268, 377);
+            rtxTaskDetailsFinished.Size = new Size(268, 344);
             rtxTaskDetailsFinished.TabIndex = 0;
             rtxTaskDetailsFinished.Text = "";
             // 
@@ -291,19 +305,19 @@
             Name = "formTaskManager";
             Padding = new Padding(18);
             Text = "Task Manager";
-            splTasks.Panel1.ResumeLayout(false);
-            splTasks.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)splTasks).EndInit();
-            splTasks.ResumeLayout(false);
+            splTasksActive.Panel1.ResumeLayout(false);
+            splTasksActive.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splTasksActive).EndInit();
+            splTasksActive.ResumeLayout(false);
             grpNewTask.ResumeLayout(false);
             grpNewTask.PerformLayout();
             tabTaskList.ResumeLayout(false);
             tabPageActive.ResumeLayout(false);
             tabPageFinished.ResumeLayout(false);
-            splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
-            splitContainer1.ResumeLayout(false);
+            splTasksFinished.Panel1.ResumeLayout(false);
+            splTasksFinished.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splTasksFinished).EndInit();
+            splTasksFinished.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -320,15 +334,16 @@
         private CheckBox chkImportant;
         private Button btnAddTask;
         private ListBox lstTasksActive;
-        private SplitContainer splTasks;
         private Button btnFinishTask;
         private GroupBox grpNewTask;
         private RichTextBox rtxTaskDetailsActive;
         private TabControl tabTaskList;
         private TabPage tabPageActive;
         private TabPage tabPageFinished;
-        private SplitContainer splitContainer1;
+        private SplitContainer splTasksFinished;
         private ListBox lstTasksFinished;
         private RichTextBox rtxTaskDetailsFinished;
+        private Button btnReactivateTask;
+        private SplitContainer splTasksActive;
     }
 }
