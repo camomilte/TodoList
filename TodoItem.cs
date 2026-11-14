@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TodoList;
 
-internal class Task
+internal class TodoItem
 {
     public string Title { get; set; }
     public string Location { get; set; }
@@ -12,7 +12,7 @@ internal class Task
     public bool Important { get; set; }
     public bool Done { get; set; }
 
-    public Task(string title, string location, DateTime duedate, bool important, bool done)
+    public TodoItem(string title, string location, DateTime duedate, bool important, bool done)
     {
         Title = title;
         Location = location;
@@ -21,8 +21,8 @@ internal class Task
         Done = done;
     }
 
-    // Get task details formatted
-    public string GetTaskDetails()
+    // Get TodoItem details formatted
+    public string GetTodoItemDetails()
     {
         return $"Title: {Title}{Environment.NewLine}" +
                $"Location: {Location}{Environment.NewLine}" +
