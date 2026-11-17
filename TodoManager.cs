@@ -13,15 +13,17 @@ namespace TodoList
             RefreshLists();
         }
 
+        #region Helpers
         private void RefreshLists()
         {
             lstTodoListActive.DataSource = todoList.Where(t => !t.Done).ToList();
             lstTodoListFinished.DataSource = todoList.Where(t => t.Done).ToList();
         }
+        #endregion
 
-        #region Button events
+        #region Add todo
 
-        private void btnAddTask_Click(object sender, EventArgs e)
+        private void btnAddTodoItem_Click(object sender, EventArgs e)
         {
             // Create todo item
             var todoItem = new TodoItem(
@@ -31,7 +33,7 @@ namespace TodoList
                 chkTodoItemImportant.Checked,
                 false);
 
-            // Add task to list
+            // Add todo to list
             todoList.Add(todoItem);
             RefreshLists();
 
@@ -47,24 +49,23 @@ namespace TodoList
 
         #endregion
 
-        // ACTIVE TASK LIST AND DETAILS EVENTS //
-        private void lstTasksActive_SelectedIndexChanged(object sender, EventArgs e)
+        #region Active todos
+        private void lstTodoListActive_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             if (lstTodoListActive.SelectedItem is TodoItem todoItem)
             {
-                // Get task details
+                // Get todo details
                 rtxTodoItemDetailsActive.Text = todoItem.GetTodoItemDetails();
             }
             else
             {
-                // Clear textbox if no tasks
+                // Clear textbox if no todos
                 rtxTodoItemDetailsActive.Clear();
             }
         }
 
-        // FINISH TASK BUTTON EVENTS //
-        private void btnFinishTask_Click(object sender, EventArgs e)
+        private void btnFinishTodoItem_Click(object sender, EventArgs e)
         {
             if (lstTodoListActive.SelectedItem is TodoItem todoItem)
             {
@@ -74,24 +75,24 @@ namespace TodoList
                 rtxTodoItemDetailsActive.Clear();
             }
         }
+        #endregion
 
-        // FINISHED TASK LIST AND DETAILS EVENTS //
-        private void lstTasksFinished_SelectedIndexChanged(object sender, EventArgs e)
+        #region Finished todos
+        private void lstTodoListFinished_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstTodoListFinished.SelectedItem is TodoItem todoItem)
             {
-                // Get task details
+                // Get todo details
                 rtxTodoItemDetailsFinished.Text = todoItem.GetTodoItemDetails();
             }
             else
             {
-                // Clear textbox if no tasks
+                // Clear textbox if no todos
                 rtxTodoItemDetailsFinished.Clear();
             }
         }
 
-        // REACTIVATE TASK BUTTON //
-        private void btnReactivateTask_Click(object sender, EventArgs e)
+        private void btnReactivateTodoItem_Click(object sender, EventArgs e)
         {
             if (lstTodoListFinished.SelectedItem is TodoItem todoItem)
             {
@@ -101,5 +102,6 @@ namespace TodoList
                 rtxTodoItemDetailsFinished.Clear();
             }
         }
+        #endregion
     }
 }

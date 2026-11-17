@@ -132,7 +132,7 @@
             btnAddTodoItem.TabIndex = 8;
             btnAddTodoItem.Text = "Add Task";
             btnAddTodoItem.UseVisualStyleBackColor = true;
-            btnAddTodoItem.Click += btnAddTask_Click;
+            btnAddTodoItem.Click += btnAddTodoItem_Click;
             // 
             // btnFinishTodoItem
             // 
@@ -143,7 +143,7 @@
             btnFinishTodoItem.TabIndex = 16;
             btnFinishTodoItem.Text = "Mark as done";
             btnFinishTodoItem.UseVisualStyleBackColor = true;
-            btnFinishTodoItem.Click += btnFinishTask_Click;
+            btnFinishTodoItem.Click += btnFinishTodoItem_Click;
             // 
             // lstTodoListActive
             // 
@@ -153,7 +153,7 @@
             lstTodoListActive.Name = "lstTodoListActive";
             lstTodoListActive.Size = new Size(162, 344);
             lstTodoListActive.TabIndex = 13;
-            lstTodoListActive.SelectedIndexChanged += lstTasksActive_SelectedIndexChanged;
+            lstTodoListActive.SelectedIndexChanged += lstTodoListActive_SelectedIndexChanged;
             // 
             // splTodosActive
             // 
@@ -245,7 +245,7 @@
             btnReactivateTodoItem.TabIndex = 17;
             btnReactivateTodoItem.Text = "Reactivate";
             btnReactivateTodoItem.UseVisualStyleBackColor = true;
-            btnReactivateTodoItem.Click += btnReactivateTask_Click;
+            btnReactivateTodoItem.Click += btnReactivateTodoItem_Click;
             // 
             // splTodosFinished
             // 
@@ -272,7 +272,7 @@
             lstTodoListFinished.Name = "lstTodoListFinished";
             lstTodoListFinished.Size = new Size(164, 344);
             lstTodoListFinished.TabIndex = 0;
-            lstTodoListFinished.SelectedIndexChanged += lstTasksFinished_SelectedIndexChanged;
+            lstTodoListFinished.SelectedIndexChanged += lstTodoListFinished_SelectedIndexChanged;
             // 
             // rtxTodoItemDetailsFinished
             // 
